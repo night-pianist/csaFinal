@@ -8,6 +8,14 @@ import java.util.Properties;
 import java.io.*;
 import java.net.*;
 
+import java.util.Scanner;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class Song 
 {
     // song variables
@@ -46,5 +54,4 @@ public class Song
     public double getLength() {
         return length;
     }
-    
 }
