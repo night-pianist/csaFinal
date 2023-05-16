@@ -43,6 +43,7 @@ public class Song {
     }
 
     public double calcDuration() {
+        File songFile = new File(filePath);
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(songFile);
             long durationMicroseconds = (long) audioInputStream.getFrameLength() * 1000000
