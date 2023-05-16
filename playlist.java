@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
-public class Playlist
-{
+public class Playlist {
     // data structure for playlist
     private ArrayList<Song> songs;
     private String playlistTitle;
@@ -21,7 +20,7 @@ public class Playlist
     // setter for multiple songs
     public void addSongs(Song[] other) {
         for (Song s : other) {
-        songs.add(s);
+            songs.add(s);
         }
     }
 
@@ -34,21 +33,18 @@ public class Playlist
     public void removeSong(Song song) {
         // checks if the song is in the playlist
         for (int i = 0; i < songs.size(); i++) {
-        Song temp = songs.get(i);
-        if (temp.equals(song))
-            songs.remove(song);
+            Song temp = songs.get(i);
+            if (temp.equals(song))
+                songs.remove(song);
         }
     }
 
     // replaces a song
-    public void replaceSong(int index, Song song)
-    {
-        if (index >= 0 && index < songs.size()) 
-        {
+    public void replaceSong(int index, Song song) {
+        if (index >= 0 && index < songs.size()) {
             songs.set(index, song);
             System.out.println("Replaced song at index " + index + " with '" + song.getTitle() + "'.");
-        }
-        else 
+        } else
             System.out.println("Invalid index. Cannot replace song.");
     }
 
@@ -77,7 +73,7 @@ public class Playlist
     public String toString() {
         String str = playlistTitle + ":\n";
         for (int i = 0; i < songs.size(); i++) {
-        str += (i + 1) + ". " + songs.get(i).toString() + "\n";
+            str += (i + 1) + ". " + songs.get(i).toString() + "\n";
         }
         return str;
     }

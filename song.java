@@ -17,44 +17,39 @@ import java.nio.file.Paths;
 import java.util.List;
 */
 
-import java.io.*; 
+import java.io.*;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 
-public class Song 
-{
+public class Song {
     // song variables
     private String title;
     private String artist;
     private double length;
     private String genre;
-    private String filePath; 
-    private File songFile; 
+    private String filePath;
+    // removed File
 
     // constructor
-    public Song(String name, String singer, String gen, String path, File f) 
-    {
+    public Song(String name, String singer, String gen, String path) {
         title = name;
         artist = singer;
         genre = gen;
         length = calcDuration();
-        filePath = path; 
-        songFile = f; 
+        filePath = path;
     }
 
-    public double calcDuration() 
-    {
-        try 
-        {
+    public double calcDuration() {
+        try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(songFile);
-            long durationMicroseconds = audioInputStream.getFrameLength() * 1000000 / audioInputStream.getFormat().getFrameRate();
-           
+            long durationMicroseconds = (long) audioInputStream.getFrameLength() * 1000000
+                    / audioInputStream.getFormat().getFrameRate();
+
             return (double) (durationMicroseconds / 1000000);
-        } catch (UnsupportedAudioFileException | IOException e) 
-        {
+        } catch (UnsupportedAudioFileException | IOException e) {
             e.printStackTrace();
         }
         return 0.0;
@@ -75,20 +70,14 @@ public class Song
     }
 
     public String getGenre() {
-        return genre; 
+        return genre;
     }
 
     public double getLength() {
         return length;
     }
 
-    public String getFilePath()
-    {
+    public String getFilePath() {
         return filePath;
-    }
-
-    public File getSongFile()
-    {
-        return songFile; 
     }
 }

@@ -1,22 +1,16 @@
-import javax.swing.*; 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 
-public class GUI extends JFrame
-{
+public class GUI extends JFrame {
     private JFrame frame;
     private JLabel currentSongLabel;
 
-    public void initialize()
-    {
+    public void initialize() {
         // the GUI
         frame = new JFrame("Music Player");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900,700);
-        
+        frame.setSize(900, 700);
+
         JPanel panel = new JPanel();
 
         JButton playButton = new JButton("Play");
@@ -32,7 +26,7 @@ public class GUI extends JFrame
         panel.add(backwardsButton);
         panel.add(currentSongLabel);
 
-        frame.getContentPane().add(panel);
+        frame.add(panel);
 
         setVisible(true);
 
