@@ -38,23 +38,23 @@ public class Song {
         title = name;
         artist = singer;
         genre = gen;
-        length = calcDuration();
+        //ength = calcDuration();
         filePath = path;
     }
 
-    public double calcDuration() {
-        File songFile = new File(filePath);
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(songFile);
-            long durationMicroseconds = audioInputStream.getFrameLength() * 1000000
-                    / (long) audioInputStream.getFormat().getFrameRate();
+    // public double calcDuration() {
+    //     File songFile = new File(filePath);
+    //     try {
+    //         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(songFile);
+    //         long durationMicroseconds = audioInputStream.getFrameLength() * 1000000
+    //                 / (long) audioInputStream.getFormat().getFrameRate();
 
-            return (double) (durationMicroseconds / 1000000);
-        } catch (UnsupportedAudioFileException | IOException e) {
-            e.printStackTrace();
-        }
-        return 0.0;
-    }
+    //         return (double) (durationMicroseconds / 1000000);
+    //     } catch (UnsupportedAudioFileException | IOException e) {
+    //         e.printStackTrace();
+    //     }
+    //     return 0.0;
+    // }
 
     // toString method
     public String toString() {
