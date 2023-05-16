@@ -43,13 +43,19 @@ public class Playlist
     // replaces a song
     public void replaceSong(int index, Song song)
     {
-        
+        if (index >= 0 && index < songs.size()) 
+        {
+            songs.set(index, song);
+            System.out.println("Replaced song at index " + index + " with '" + song.getTitle() + "'.");
+        }
+        else 
+            System.out.println("Invalid index. Cannot replace song.");
     }
 
     // clears playlist
     public void clearList() {
         for (int i = 0; i < songs.size(); i++) {
-        songs.remove(songs.get(i));
+            songs.remove(songs.get(i));
         }
     }
 
