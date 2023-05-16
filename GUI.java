@@ -27,8 +27,13 @@ public class GUI extends JFrame {
         panel.add(currentSongLabel);
 
         frame.add(panel);
+    }
 
-        setVisible(true);
+    public void setVisible(boolean visible) {
+        frame.setVisible(visible);
+    }
 
+    public void updateCurrentSong(String songName) {
+        currentSongLabel.setText("Current Song: " + songName);
     }
 }
