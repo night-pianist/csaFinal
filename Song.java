@@ -46,8 +46,8 @@ public class Song {
         File songFile = new File(filePath);
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(songFile);
-            long durationMicroseconds = (long) audioInputStream.getFrameLength() * 1000000
-                    / audioInputStream.getFormat().getFrameRate();
+            long durationMicroseconds = audioInputStream.getFrameLength() * 1000000
+                    / (long) audioInputStream.getFormat().getFrameRate();
 
             return (double) (durationMicroseconds / 1000000);
         } catch (UnsupportedAudioFileException | IOException e) {
