@@ -8,11 +8,15 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class AudioPlayer{
+    // variable for audio clip
     private Clip clip;
+
+    // buttons for GUI
     private JButton playButton;
     private JButton pauseButton;
     private JButton stopButton;
 
+    // loads the clip where the audio will come from
     public void load(String filePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         File audioFile = new File(filePath);
 
@@ -24,18 +28,21 @@ public class AudioPlayer{
         clip.open(audioStream);
     }
 
+    // plays the clip if it's not null and if it's not already playing
     public void play() {
         if (clip != null && !clip.isRunning()) {
             clip.start();
         }
     }
 
+    // pauses the clip if it's not null and if it's currently playing
     public void pause() {
         if (clip != null && clip.isRunning()) {
             clip.stop();
         }
     }
 
+    // stops the clip if it's not null; resets the clip to the start
     public void stop() {
         if (clip != null) {
             clip.stop();
@@ -43,14 +50,18 @@ public class AudioPlayer{
         }
     }
 
+    // returns whether the clip is not null and playing
     public boolean isPlaying() {
         return clip != null && clip.isRunning();
     }
 
+    // the GUI
     public void createAndShowGUI() {
+        // creates new frame
         JFrame frame = new JFrame("Audio Player");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // creates play button 
         playButton = new JButton("Play");
         playButton.addActionListener(new ActionListener() {
             @Override
@@ -59,6 +70,7 @@ public class AudioPlayer{
             }
         });
 
+        // creates pause button
         pauseButton = new JButton("Pause");
         pauseButton.addActionListener(new ActionListener() {
             @Override
@@ -67,6 +79,7 @@ public class AudioPlayer{
             }
         });
 
+        // creates stop button
         stopButton = new JButton("Stop");
         stopButton.addActionListener(new ActionListener() {
             @Override
@@ -75,6 +88,7 @@ public class AudioPlayer{
             }
         });
 
+        // adds the created buttons to the panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(playButton);
         buttonPanel.add(pauseButton);

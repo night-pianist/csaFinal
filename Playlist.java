@@ -22,11 +22,13 @@ public class Playlist {
         for (Song s : other) {
             songs.add(s);
         }
+        System.out.println("All songs from " + other + " has been added to the playlist."); 
     }
 
     // setters for single songs
     public void addSong(Song song) {
         songs.add(song);
+        System.out.println(song + " has been added to the playlist."); 
     }
 
     // remove a song
@@ -35,7 +37,10 @@ public class Playlist {
         for (int i = 0; i < songs.size(); i++) {
             Song temp = songs.get(i);
             if (temp.equals(song))
+            {
                 songs.remove(song);
+                System.out.println(song + " has been removed from the playlist."); 
+            }
         }
     }
 
@@ -53,11 +58,13 @@ public class Playlist {
         for (int i = 0; i < songs.size(); i++) {
             songs.remove(songs.get(i));
         }
+        System.out.println("List has been cleared.");
     }
 
     // setter for title
     public void setTitle(String title) {
         playlistTitle = title;
+        System.out.println("The playlist title has been changed to " + title);
     }
 
     // getters
