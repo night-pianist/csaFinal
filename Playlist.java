@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.*; 
 
 public class Playlist {
     // data structure for playlist
@@ -21,8 +22,7 @@ public class Playlist {
     public void addSongs(Song[] other) {
         for (Song s : other) {
             songs.add(s);
-        }
-        System.out.println("All songs from " + other + " has been added to the playlist."); 
+        } 
     }
 
     // setters for single songs
@@ -53,6 +53,18 @@ public class Playlist {
             System.out.println("Invalid index. Cannot replace song.");
     }
 
+    // shuffles the playlist
+    public void shuffle()
+    {
+        Random random = new Random();
+        int size = songs.size();
+        
+        for (int i = size - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            Collections.swap(songs, i, j);
+        }
+    }
+
     // clears playlist
     public void clearList() {
         for (int i = 0; i < songs.size(); i++) {
@@ -67,6 +79,15 @@ public class Playlist {
         System.out.println("The playlist title has been changed to " + title);
     }
 
+    // toString method
+    public String toString() {
+        String str = playlistTitle + ":\n";
+        for (int i = 0; i < songs.size(); i++) {
+            str += (i + 1) + ". " + songs.get(i).toString() + "\n";
+        }
+        return str; 
+    }
+
     // getters
     public String getTitle() {
         return playlistTitle;
@@ -74,14 +95,5 @@ public class Playlist {
 
     public ArrayList<Song> getPlaylist() {
         return songs;
-    }
-
-    // toString method
-    public String toString() {
-        String str = playlistTitle + ":\n";
-        for (int i = 0; i < songs.size(); i++) {
-            str += (i + 1) + ". " + songs.get(i).toString() + "\n";
-        }
-        return str;
     }
 }
