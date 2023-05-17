@@ -56,9 +56,9 @@ public class AudioPlayer{
     }
 
     // the GUI
-    public void createAndShowGUI() {
+    public void createAndShowGUI(String name) {
         // creates new frame
-        JFrame frame = new JFrame("Audio Player");
+        JFrame frame = new JFrame(name);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // creates play button 
@@ -101,16 +101,11 @@ public class AudioPlayer{
 
     public static void main(String[] args) {
         AudioPlayer player = new AudioPlayer();
+        AudioPlayer player2 = new AudioPlayer();
+        AudioPlayer player3 = new AudioPlayer();
         Song poweroflove = new Song("Power of Love", "Huey Lewis and the News", "Rock", "C:/Users/Masroor Siddiqui/OneDrive/Pictures/Documents/Desktop2/Desktop/csaFinal-main/The Power Of Love- Huey Lewis And The News.wav");
         Song arabella = new Song("Arabella", "Arctic Monkeys", "Rock", "C:/Users/Masroor Siddiqui/OneDrive/Pictures/Documents/Desktop2/Desktop/csaFinal-main/Arabella.wav");
-        Playlist rockPlaylist = new Playlist("Rock");
-        rockPlaylist.addSong(arabella);
-        rockPlaylist.addSong(poweroflove);
-
-        // Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        // System.out.println("Type the song you would like to listen to");
-        // String songRequest = myObj.nextLine();
-        
+        Song theArtofWar = new Audiobook("The Art of War", "Sun Tzu", "C:/Users/Masroor Siddiqui/OneDrive/Pictures/Documents/Desktop2/Desktop/csaFinal-main/The Art of War by Sun Tzu： Entire Unabridged Audiobook.wav");
 
         try {
             player.load(poweroflove.getFilePath());
@@ -118,11 +113,41 @@ public class AudioPlayer{
             e.printStackTrace();
             return;
         }
-
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                player.createAndShowGUI(); 
+                player.createAndShowGUI("Power of Love"); 
             }
         });
+
+        try {
+            player2.load(arabella.getFilePath());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                player2.createAndShowGUI("Arabella"); 
+            }
+        });
+
+        try {
+            player3.load(theArtofWar.getFilePath());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                player3.createAndShowGUI("The Art of War"); 
+            }
+        });
+
+        
+        // SwingUtilities.invokeLater(new Runnable() {
+        //     public void run() {
+        //         player.createAndShowGUI(); 
+        //     }
+        // });
     }
 }

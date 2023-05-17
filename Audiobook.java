@@ -1,33 +1,26 @@
-public class Audiobook extends AudioPlayer{
+//Child class of Parent Song Class
+public class Audiobook extends Song{
     private String title;
     private String author;
-    private int length;
+    private String path;
     
-    public Audiobook(String title, String author, int len) {
-        this.title = title;
-        this.author = author;
-        this.length = len;
-    }
-    
-    public void play() {
-        System.out.println("Audiobook: Playing - " + title);
-        super.play();
+    //Constructor
+    public Audiobook(String title, String writer, String direction) {
+        super(title, writer, "Book", direction);
+        author = writer;
+        path = direction;
     }
 
-    public void pause()
-    {
-        System.out.println("Audiobook: Pausing - " + title);
-        super.pause();
+    // getter methods
+    public String getTitle() {
+        return title;
     }
-    
-    public void stop() {
-        System.out.println("Audiobook: Stopping - " + title);
-        super.stop();
+
+    public String getAuthor() {
+        return super.getArtist();
     }
-    
-    public static void main(String[] args) {
-        Audiobook audiobook = new Audiobook("The Great Gatsby", "F. Scott Fitzgerald", 180);
-        audiobook.play();
-        audiobook.stop();
+
+    public String getFilePath() {
+        return path;
     }
 }
